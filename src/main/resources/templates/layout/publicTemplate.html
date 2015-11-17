@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}"></title>
+<link rel="stylesheet" type="text/css" media="all"
+	href="/css/bootstrap.min.css"
+	th:href="@{/assets/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/main.css"
+	th:href="@{/css/main.css}" />
+</head>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="70">
+	<!-- header -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="/">Web Presentation</a>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">Diego Ventura<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Perfil</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Salir</a></li>
+					</ul></li>
+				<li>
+					<ul>
+						<a href="/view/login">
+							<button type="button" class="btn btn-default navbar-btn">Iniciar
+								session</button>
+						</a>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<!-- end header -->
+	<div class="container">
+		<div class="row">
+			<div th:replace="(${body} == null) ? inicio : ${body}"></div>
+		</div>
+	</div>
+	<!-- footer -->
+	<footer class="well well-sm">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="block">
+						<p>
+							Copyright &copy; <a href="http://tenochsoftware.com/">Tenoch
+								Software</a>|All right reserved.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- end footer -->
+	<script src="/js/jquery.min.js" th:src="@{/assets/jquery/js/jquery.min.js}"></script>
+	<script src="/js/bootstrap.min.js" th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>	
+</body>
+</html>

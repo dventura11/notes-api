@@ -1,0 +1,10 @@
+body {
+	padding-top: 70px;
+}
+
+ul.nav-pills {
+	padding-top:10px;	
+	position: fixed;
+}
+
+.scroll-y {	overflow-y: scroll;}
