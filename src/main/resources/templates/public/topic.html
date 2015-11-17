@@ -10,7 +10,7 @@
 		          <a class="dropdown-toggle" data-toggle="dropdown" th:href="'#'" th:inline="text">[[${subTopic.title}]]<span class="caret"></span></a>
 		          <ul class="dropdown-menu">
 		            <th:block th:each="article : ${subTopic.articles}">
-			            <li><a th:href="'#'+${subTopic.title}+'-'+${article.title}" th:text="${article.title}"></a></li>
+			            <li><a th:href="${#strings.replace('#'+subTopic.title+' '+article.title,' ','_')}" th:text="${article.title}"></a></li>
 		            </th:block>                     
 		          </ul>
 		        </li>		        
@@ -27,7 +27,7 @@
 	        	<p th:text="${subTopic.html}"></p>
 	      	</div>
 	      	<th:block th:each="article : ${subTopic.articles}">
-				<div th:id="${subTopic.title}+'-'+${article.title}">
+				<div th:id="${#strings.replace(subTopic.title+' '+article.title,' ','_')}">
 		        	<div class="jumbotron" ><h3 th:text="${article.title}"></h3></div>
 		        	<p th:text="${article.html}"></p>
 		      	</div>

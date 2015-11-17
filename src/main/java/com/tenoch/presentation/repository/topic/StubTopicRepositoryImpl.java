@@ -63,7 +63,7 @@ public class StubTopicRepositoryImpl implements ITopicRepository {
 	private Collection<Article> getArticles(String title) {
 		Collection<Article> articles =  new ArrayList<Article>();
 		for (int j = 0; j < 3; j++) {
-			articles.add(getArticle( title + "("+j+")"));
+			articles.add(getArticle( title + "_"+j));
 		}
 		return articles;
 	}
