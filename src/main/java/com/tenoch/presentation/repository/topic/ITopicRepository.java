@@ -1,13 +1,9 @@
 package com.tenoch.presentation.repository.topic;
 
-import java.util.Collection;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.tenoch.presentation.internal.Topic;
 
-public interface ITopicRepository {
-
-	Collection<Topic> getAll();
-
-	Topic get(int id);
-
+public interface ITopicRepository extends MongoRepository<Topic, String>{
+	
 }

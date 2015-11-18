@@ -1,16 +1,15 @@
-
-    <nav class="col-sm-3" id="myScrollspy">
-      <ul class="nav nav-pills nav-stacked">
+      <nav class="col-sm-3 hidden-print hidden-xs hidden-sm affix-top" id="myScrollspy">
+      <ul class="nav scroll-y nav-pills nav-stacked">
         <th:block th:each="subTopic : ${topic.subTopics}">	        
 	        <th:block th:if="${#lists.isEmpty(subTopic.articles)}">
-	        	<li><a th:href="'#'+${subTopic.title}" th:text="${subTopic.title}"></a></li>
+	        	<li><a th:href="${#strings.replace(#strings.replace('#'+subTopic.title,' ','-'),',','')}" th:text="${subTopic.title}"></a></li>
 	        </th:block>
 	        <th:block th:if="${not #lists.isEmpty(subTopic.articles)}">		        
 		        <li class="dropdown">
 		          <a class="dropdown-toggle" data-toggle="dropdown" th:href="'#'" th:inline="text">[[${subTopic.title}]]<span class="caret"></span></a>
 		          <ul class="dropdown-menu">
 		            <th:block th:each="article : ${subTopic.articles}">
-			            <li><a th:href="${#strings.replace('#'+subTopic.title+' '+article.title,' ','_')}" th:text="${article.title}"></a></li>
+			            <li><a th:href="${#strings.replace('#'+subTopic.title+' '+article.title,' ','-')}" th:text="${article.title}"></a></li>
 		            </th:block>                     
 		          </ul>
 		        </li>		        
@@ -22,14 +21,14 @@
     <div class="col-sm-9">
       <h1 th:text="${topic.title}"></h1>      
 		<th:block th:each="subTopic : ${topic.subTopics}">
-			<div th:id="${subTopic.title}">
+			<div th:id="${#strings.replace(#strings.replace(subTopic.title,' ','-'),',','')}">
 	        	<div class="jumbotron"><h2 th:text="${subTopic.title}"></h2></div>
-	        	<p th:text="${subTopic.html}"></p>
+	        	<p th:utext="${subTopic.html}"></p>
 	      	</div>
 	      	<th:block th:each="article : ${subTopic.articles}">
-				<div th:id="${#strings.replace(subTopic.title+' '+article.title,' ','_')}">
+				<div th:id="${#strings.replace(subTopic.title+' '+article.title,' ','-')}">
 		        	<div class="jumbotron" ><h3 th:text="${article.title}"></h3></div>
-		        	<p th:text="${article.html}"></p>
+		        	<p th:utext="${article.html}"></p>
 		      	</div>
 	      	</th:block>
 		</th:block>            

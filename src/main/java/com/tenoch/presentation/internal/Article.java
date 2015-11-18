@@ -2,16 +2,9 @@ package com.tenoch.presentation.internal;
 
 public class Article {
 
-	private int id;
+	private Long id = System.currentTimeMillis();
 	private String title;
 	private String html;
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getTitle() {
 		return title;
 	}
@@ -23,5 +16,11 @@ public class Article {
 	}
 	public void setHtml(String html) {
 		this.html = html;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}	
 }

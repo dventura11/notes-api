@@ -5,17 +5,11 @@ import java.util.Collection;
 
 public class SubTopic {
 
-	private int id;
+	private Long id = System.currentTimeMillis();
 	private String title;
 	private String html;
 	private Collection<Article> articles = new ArrayList<Article>();
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getTitle() {
 		return title;
 	}
@@ -33,5 +27,19 @@ public class SubTopic {
 	}
 	public void setHtml(String html) {
 		this.html = html;
-	}	
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj != null && obj instanceof SubTopic){
+			return this.id.equals((((SubTopic)obj).getId()));
+		}
+		return super.equals(obj);
+	}
 }

@@ -1,10 +1,33 @@
 body {
 	padding-top: 70px;
 }
-
+.fixed-top{
+	padding-top:10px;	
+	position: fixed;
+}
 ul.nav-pills {
 	padding-top:10px;	
 	position: fixed;
 }
 
-.scroll-y {	overflow-y: scroll;}
+.scroll-y {
+    overflow-y: auto;
+    height: 80%;
+}
+
+.scroll-y::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #FFFFFF;
+}
+
+.scroll-y::-webkit-scrollbar
+{
+	width: 3px;
+	background-color: #FFFFFF;
+}
+
+.scroll-y::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+}

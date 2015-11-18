@@ -2,17 +2,20 @@ package com.tenoch.presentation.internal;
 
 import java.util.Collection;
 
+import org.springframework.data.annotation.Id;
+
 public class Topic {
 
-	private int id;
+	@Id	
+	private String id;
 	private String title;
 	private String description;
 	private Collection<SubTopic> subTopics;
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getTitle() {

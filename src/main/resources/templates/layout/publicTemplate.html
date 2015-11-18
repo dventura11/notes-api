@@ -7,29 +7,46 @@
 <link rel="stylesheet" type="text/css" media="all"
 	href="/css/bootstrap.min.css"
 	th:href="@{/assets/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/font-awesome.min.css"
+	th:href="@{/assets/font-awesome/css/font-awesome.min.css}" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/summernote.min.css"
+	th:href="@{/assets/sumernote/summernote.css}" />
 <link rel="stylesheet" type="text/css" media="all" href="/css/main.css"
-	th:href="@{/css/main.css}" />
+	th:href="@{/css/main.css}" />	
+<script src="/js/jquery.min.js" th:src="@{/assets/jquery/js/jquery.min.js}"></script>
+<script src="/js/bootstrap.min.js" th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
+<script src="/js/summernote.min.js" th:src="@{/assets/sumernote/summernote.min.js}"></script>
 </head>
 <body data-spy="scroll" data-target="#myScrollspy" data-offset="70">
 	<!-- header -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<a class="navbar-brand" href="/">Web Presentation</a>
+			<span th:unless="${topic} == null" th:text="${topic.title}"></span>			
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
+				<li sec:authorize="isAuthenticated()" class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">Diego Ventura<span class="caret"></span></a>
+					aria-expanded="false"><span sec:authentication="name"></span><span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Perfil</a></li>
+						<li><a href="/bck/topics">Topics</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="#">Salir</a></li>
+						<li>
+				            <form th:action="@{/logout}" method="post">
+				            	<button type="submit" class="btn btn-default">Cerrar sesión</button>
+				        	</form>
+				        </li>
 					</ul></li>
-				<li>
+				<li sec:authorize="isAnonymous()">
 					<ul>
-						<a href="/view/login">
-							<button type="button" class="btn btn-default navbar-btn">Iniciar
-								session</button>
-						</a>
+						<form class="navbar-form navbar-left" role="login" th:action="@{/view/login}" method="post">
+						  <div class="form-group">
+						    <input type="text" class="form-control" name="username" placeholder="user"/>
+						  </div>
+						  <div class="form-group">
+						    <input type="password" class="form-control" name="password" placeholder="password"/>
+						  </div>  
+						  <button type="submit" class="btn btn-default">Iniciar sesión</button>
+						</form>
 					</ul>
 				</li>
 			</ul>
@@ -56,8 +73,6 @@
 			</div>
 		</div>
 	</footer>
-	<!-- end footer -->
-	<script src="/js/jquery.min.js" th:src="@{/assets/jquery/js/jquery.min.js}"></script>
-	<script src="/js/bootstrap.min.js" th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>	
+	<!-- end footer -->		
 </body>
 </html>

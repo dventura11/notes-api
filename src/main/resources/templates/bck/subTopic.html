@@ -1,0 +1,46 @@
+<div class="page-header">
+	<h1 th:text="${subTopic.title}"></h1>
+</div>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<form class="navbar-form navbar-left" id="setSubTopic"
+			th:action="@{{id}/update(id=${subTopic.id})}" method="post">
+			<input type="hidden" id="subTopicHtml" name="html" />
+			<div class="form-group">
+				<div id="subTopicHtmlEditor" th:utext="${subTopic.html}"></div>
+			</div>
+			<br />
+			<button type="submit" class="btn btn-default">guardar</button>
+		</form>
+	</div>
+</div>
+<div class="panel">
+	<div class="panel-heading">
+		<h2 class="panel-title">Agregar Articulo</h2>
+	</div>
+	<div class="panel-body">
+		<form class="navbar-form navbar-left" id="addArticle"
+			th:action="@{{id}/addArticle(id=${subTopic.id})}" method="post">
+			<input type="hidden" id="articleHtml" name="html" />
+			<div class="form-group">
+				<input type="text" class="form-control" name="title"
+					placeholder="Título" />
+			</div>
+			<br />
+			<div class="form-group">
+				<div id="articleHtmlEditor"></div>
+			</div>
+			<br />
+			<button type="submit" class="btn btn-default">crear</button>
+		</form>
+	</div>
+</div>
+
+<div>
+	<ul>
+		<th:block th:each="article : ${subTopic.articles}">			
+				<li><a th:href="@{/{id}/{ArticleId}/edit(id=${subTopic.id},ArticleId=${article.id})}" th:text="${article.title}"></a></li>			
+		</th:block>
+	</ul>
+</div>
+<script src="/js/bckSubTopic.js" th:src="@{/js/bckSubTopic.js}"></script>
