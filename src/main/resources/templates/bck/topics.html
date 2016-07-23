@@ -20,19 +20,20 @@
 		</form>
 	</div>
 </div>
-<div>
-	<ul class="list-group">
-		<th:block th:each="topic : ${topics}">
-			<li class="list-group-item">
-				<form th:action="@{/bck/topic/{id}/remove/(id=${topic.id})}"
-					method="post">
-					<a th:href="@{/bck/topic/{id}/(id=${topic.id})}">
-						<h4 class="list-group-item-heading" th:text="${topic.title}"></h4>
-					</a>
-					<p th:text="${topic.description}"></p>
-					<button type="submit" class="glyphicon glyphicon-trash"></button>
-				</form>
-			</li>
-		</th:block>
-	</ul>
+<div class="row">
+	<th:block th:each="topic : ${topics}">
+		<div class="col-md-3 portfolio-item">
+			<div class="card card-block">
+				<a th:href="@{/bck/topic/{id}/(id=${topic.id})}">
+					<h4 class="card-title" th:text="${topic.title}"></h4>
+				</a>
+				<p class="card-text" th:text="${topic.description}"></p>
+				<div class="card-block">
+					<form th:action="@{/bck/topic/{id}/remove/(id=${topic.id})}" method="post">
+						<button class="fa fa-trash-o" type="submit">borrar</button>
+					</form>
+				</div>				
+			</div>
+		</div>
+	</th:block>
 </div>

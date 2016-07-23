@@ -1,18 +1,22 @@
 package com.tenoch.presentation.internal;
 
+import java.math.BigInteger;
+import java.util.Set;
+
 import org.springframework.data.annotation.Id;
 
 public class User {
 
 	@Id
-	private int id;
+	private BigInteger id;
 	
 	private String user;
 	private String password;
 	private String name;
 	private String email;
 	private boolean enable;
-
+	private Set<String> roles;
+	
 	public User() {}
 	
 	public User(User user) {
@@ -23,10 +27,10 @@ public class User {
 		this.name = user.getName();
 	}
 	
-	public int getId() {
+	public BigInteger getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 	public String getUser() {
@@ -58,6 +62,14 @@ public class User {
 	}
 	public void setEnable(boolean enable) {
 		this.enable = enable;
+	}
+
+	public Set<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<String> roles) {
+		this.roles = roles;
 	}
 	
 }
