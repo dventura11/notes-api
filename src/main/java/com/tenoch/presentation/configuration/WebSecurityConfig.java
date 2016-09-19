@@ -15,6 +15,9 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @Configuration
 @EnableWebSecurity
+/**
+ *Some documentation for this class
+ *//
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
@@ -31,11 +34,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .logout()
                 .permitAll().logoutSuccessUrl("/");
     }
-	
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth, AuthenticationProvider provider) throws Exception {
         auth.authenticationProvider(provider);
-    }    
+    }
     /*
     @Autowired
     @Bean
