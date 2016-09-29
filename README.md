@@ -19,12 +19,13 @@ You can create documentation or informatión about a topic.
 	    ]
 	})
 	>exit
-	$git clone
+	$git clone https://github.com/dventura11/webPresentation
+	cd webPresentation
 	$gradle -Dskip.tests run
 ```
 open [localhost:8080](http:localhost:8080)
 
-Default user and password
+Default user and password:
 	admin
 	admin123
 
