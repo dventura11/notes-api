@@ -1,16 +1,16 @@
 package com.tenoch.presentation.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+
 import org.springframework.context.annotation.Configuration;
+
 import org.springframework.security.authentication.AuthenticationProvider;
+
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.thymeleaf.spring4.SpringTemplateEngine;
-import org.thymeleaf.templateresolver.ITemplateResolver;
+
 
 @Configuration
 @EnableWebSecurity
@@ -27,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()
                 .and()
             .formLogin()
-                .loginPage("/view/login")
+                .loginPage("/login")
                 .permitAll()
                 .and()
             .logout()
@@ -38,14 +38,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth, AuthenticationProvider provider) throws Exception {
         auth.authenticationProvider(provider);
     }
-    /*
-    @Autowired
-    @Bean
-    public SpringTemplateEngine getEngine(ITemplateResolver templateResolver){
-    	SpringTemplateEngine engine = new SpringTemplateEngine();
-    	engine.setTemplateResolver(templateResolver);
-    	engine.addDialect(new SpringSecurityDialect());
-		return engine;
-    }
-    */
+
 }

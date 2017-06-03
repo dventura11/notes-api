@@ -9,7 +9,7 @@ public class SubTopic {
 	private String title;
 	private String html;
 	private Collection<Article> articles = new ArrayList<Article>();
-	
+
 	public String getTitle() {
 		return title;
 	}
@@ -34,7 +34,7 @@ public class SubTopic {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if(obj != null && obj instanceof SubTopic){
