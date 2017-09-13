@@ -13,3 +13,5 @@ build: frontend
 	gradle build
 run: build
 	gradle run
+run-dev:
+	gradle run  -Drun.arguments="--spring.devtools.livereload.enabled=true --spring.devtools.restart.enabled=true"

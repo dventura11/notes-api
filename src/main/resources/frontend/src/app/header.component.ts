@@ -3,10 +3,10 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'header-cmp',
   templateUrl: './header.component.html',
+  styleUrls: [ './header.component.css'],
 })
 
 export class HeaderComponent {
-  username:string = '';
   topic:string = '';
   subTopic:string = '';
 }

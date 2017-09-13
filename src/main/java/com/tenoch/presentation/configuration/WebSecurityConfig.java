@@ -19,24 +19,20 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  **/
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests()
-                .antMatchers("/adm/*", "/bck/*").authenticated()
-                .anyRequest().permitAll()
-                .and()
-            .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-            .logout()
-                .permitAll().logoutSuccessUrl("/");
-    }
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    http
+      .csrf().disable()
+      .authorizeRequests()
+      .antMatchers("/adm/**", "/bck/**").authenticated()
+      .anyRequest().permitAll()
+      .and().formLogin().loginPage("/login").permitAll()
+      .and().logout().permitAll().logoutSuccessUrl("/");
+  }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth, AuthenticationProvider provider) throws Exception {
-        auth.authenticationProvider(provider);
-    }
+  @Autowired
+  public void configureGlobal(AuthenticationManagerBuilder auth, AuthenticationProvider provider) throws Exception {
+    auth.authenticationProvider(provider);
+  }
 
 }
