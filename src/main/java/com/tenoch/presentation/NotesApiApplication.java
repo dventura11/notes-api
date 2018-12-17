@@ -1,12 +1,14 @@
 package com.tenoch.presentation;
 
+import com.coxautodev.graphql.tools.SchemaParser;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebPresentationApplication {
+public class NotesApiApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(WebPresentationApplication.class, args);
+        SpringApplication.run(NotesApiApplication.class, args);
+        SchemaParser.newParser().file("notes-schema.graphqls");
     }
 }

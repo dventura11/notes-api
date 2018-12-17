@@ -9,22 +9,22 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.thymeleaf.spring4.SpringTemplateEngine;
-import org.thymeleaf.templateresolver.ITemplateResolver;
 
+/**
+ * Security configuration for the app
+ **/
 @Configuration
 @EnableWebSecurity
-/**
- *Some documentation for this class
- **/
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/adm/*", "/bck/*").authenticated()
+                //.antMatchers("/adm/*", "/bck/*").authenticated()
                 .anyRequest().permitAll()
+                ;
+        /*
                 .and()
             .formLogin()
                 .loginPage("/view/login")
@@ -32,20 +32,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .logout()
                 .permitAll().logoutSuccessUrl("/");
+                */
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth, AuthenticationProvider provider) throws Exception {
         auth.authenticationProvider(provider);
     }
-    /*
-    @Autowired
-    @Bean
-    public SpringTemplateEngine getEngine(ITemplateResolver templateResolver){
-    	SpringTemplateEngine engine = new SpringTemplateEngine();
-    	engine.setTemplateResolver(templateResolver);
-    	engine.addDialect(new SpringSecurityDialect());
-		return engine;
-    }
-    */
 }
